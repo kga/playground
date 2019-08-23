@@ -1,0 +1,11 @@
+name: cron-test
+
+on:
+  schedule:
+  - cron: '2 * * * * '
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo 'hi'
