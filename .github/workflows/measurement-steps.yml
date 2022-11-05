@@ -33,7 +33,7 @@ jobs:
   measurement-jobs:
     if: ${{ always() }}
     needs: [our-great-continuous-integration-1, our-great-continuous-integration-2]
-    name: Measure our jobs:
+    name: Measure our jobs
     runs-on: ubuntu-latest
     steps:
       - id: measure-job-number-1
