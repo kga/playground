@@ -42,3 +42,9 @@ jobs:
           echo ${{ github }}
           echo ${{ github.run_id }}
           echo ${{ github.run_number }}
+      - id: list-jobs-for-a-workflow-run-attempt
+        name: List jobs for a workflow
+        run: |
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_number }}/jobs
