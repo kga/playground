@@ -38,12 +38,19 @@ jobs:
     steps:
       - id: measure-job-number-1
         name: "Measure Job Number #1"
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+      - id: list-jobs-for-a-workflow-run
+        name: List jobs for a workflow run attempt
         run: |
-          echo ${{ github }}
-          echo ${{ github.run_id }}
-          echo ${{ github.run_number }}
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: list-jobs-for-a-workflow-run-attempt
-        name: List jobs for a workflow
+        name: List jobs for a workflow run
         run: |
           gh api \
             -H "Accept: application/vnd.github+json" \
