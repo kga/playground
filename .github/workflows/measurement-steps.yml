@@ -30,3 +30,15 @@ jobs:
       - id: job-number-3
         name: "Job #3"
         run: sleep $(($RANDOM % 60))
+  measurement-jobs:
+    if: ${{ always() }}
+    needs: [our-great-continuous-integration-1, our-great-continuous-integration-2]
+    name: Measure our jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - id: measure-job-number-1
+        name: "Measure Job Number #1"
+        run: |
+          echo ${{ github }}
+          echo ${{ github.run_id }}
+          echo ${{ github.run_number }}
