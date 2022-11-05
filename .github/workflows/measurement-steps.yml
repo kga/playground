@@ -42,7 +42,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
       - id: list-jobs-for-a-workflow-run
-        name: List jobs for a workflow run attempt
+        name: List jobs for a workflow run
         run: |
           gh api \
             -H "Accept: application/vnd.github+json" \
@@ -50,7 +50,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: list-jobs-for-a-workflow-run-attempt
-        name: List jobs for a workflow run
+        name: List jobs for a workflow run attempt
         run: |
           gh api \
             -H "Accept: application/vnd.github+json" \
