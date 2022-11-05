@@ -4,19 +4,29 @@ on:
   pull_request:
 
 jobs:
-  our-great-continuous-integration:
+  our-great-continuous-integration-1:
     name: Job1
     runs-on: ubuntu-latest
     steps:
       - id: job-number-1
-        name: Job \#2
+        name: Job #2
         run: sleep $(($RANDOM % 60))
       - id: job-number-2
-        name: Job \#2
+        name: Job #2
         run: sleep $(($RANDOM % 60))
       - id: job-number-3
-        name: Job \#3
+        name: Job #3
         run: sleep $(($RANDOM % 60))
-      - id: job-number-4
-        name: Job \#4
+  our-great-continuous-integration-2:
+    name: Job2
+    runs-on: ubuntu-latest
+    steps:
+      - id: job-number-1
+        name: Job #2
+        run: sleep $(($RANDOM % 60))
+      - id: job-number-2
+        name: Job #2
+        run: sleep $(($RANDOM % 60))
+      - id: job-number-3
+        name: Job #3
         run: sleep $(($RANDOM % 60))
