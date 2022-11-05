@@ -49,11 +49,3 @@ jobs:
             /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - id: list-jobs-for-a-workflow-run-attempt
-        name: List jobs for a workflow run attempt
-        run: |
-          gh api \
-            -H "Accept: application/vnd.github+json" \
-            /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_number }}/jobs
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
