@@ -48,3 +48,5 @@ jobs:
           gh api \
             -H "Accept: application/vnd.github+json" \
             /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_number }}/jobs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
