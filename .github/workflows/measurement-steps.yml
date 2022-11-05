@@ -9,24 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: job-number-1
-        name: Job #2
+        name: "Job #1"
         run: sleep $(($RANDOM % 60))
       - id: job-number-2
-        name: Job #2
+        name: "Job #2"
         run: sleep $(($RANDOM % 60))
       - id: job-number-3
-        name: Job #3
+        name: "Job #3"
         run: sleep $(($RANDOM % 60))
   our-great-continuous-integration-2:
     name: Job2
     runs-on: ubuntu-latest
     steps:
       - id: job-number-1
-        name: Job #2
+        name: "Job #1"
         run: sleep $(($RANDOM % 60))
       - id: job-number-2
-        name: Job #2
+        name: "Job #2"
         run: sleep $(($RANDOM % 60))
       - id: job-number-3
-        name: Job #3
+        name: "Job #3"
         run: sleep $(($RANDOM % 60))
