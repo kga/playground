@@ -1,0 +1,51 @@
+name: Measurement Steps
+run-name: Measurement Steps by @${{ github.actor }}
+on:
+  pull_request:
+
+jobs:
+  our-great-continuous-integration-1:
+    name: Job1
+    runs-on: ubuntu-latest
+    steps:
+      - id: job-number-1
+        name: "Job #1"
+        run: sleep $(($RANDOM % 60))
+      - id: job-number-2
+        name: "Job #2"
+        run: sleep $(($RANDOM % 60))
+      - id: job-number-3
+        name: "Job #3"
+        run: sleep $(($RANDOM % 60))
+  our-great-continuous-integration-2:
+    name: Job2
+    runs-on: ubuntu-latest
+    steps:
+      - id: job-number-1
+        name: "Job #1"
+        run: sleep $(($RANDOM % 60))
+      - id: job-number-2
+        name: "Job #2"
+        run: sleep $(($RANDOM % 60))
+      - id: job-number-3
+        name: "Job #3"
+        run: sleep $(($RANDOM % 60))
+  measurement-jobs:
+    if: ${{ always() }}
+    needs: [our-great-continuous-integration-1, our-great-continuous-integration-2]
+    name: Measure our jobs
+    runs-on: ubuntu-latest
+    steps:
+      - id: measure-job-number-1
+        name: "Measure Job Number #1"
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+      - id: list-jobs-for-a-workflow-run
+        name: List jobs for a workflow run
+        run: |
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
